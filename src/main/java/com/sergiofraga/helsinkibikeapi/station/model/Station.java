@@ -1,9 +1,10 @@
-package com.sergiofraga.helsinkibikeapi.station;
+package com.sergiofraga.helsinkibikeapi.station.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,7 @@ import lombok.Setter;
 @Table(name = "stations")
 public class Station {
 
-    @Id
-    @GeneratedValue
-    private int fid;
+    private @Id @GeneratedValue int fid;
     private int id;
     private String nimi;
     private String namn;
