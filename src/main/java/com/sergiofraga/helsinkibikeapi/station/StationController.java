@@ -4,9 +4,11 @@ import com.sergiofraga.helsinkibikeapi.station.model.StationDto;
 import com.sergiofraga.helsinkibikeapi.station.model.StationResponse;
 import com.sergiofraga.helsinkibikeapi.station.service.StationService;
 import com.sergiofraga.helsinkibikeapi.util.AppConstants;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class StationController {
@@ -29,6 +31,12 @@ public class StationController {
 
     @GetMapping(value = "/api/v1/stationById")
     public StationDto getStationById(@RequestParam(value = "id") int id) {
-        return stationService.getStationById(id);
+        StationDto station = stationService.getStationById(id);
+
+        if(station == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Station was not found for parameter id:{" + id + "}");
+        }
+
+        return station;
     }
 }
