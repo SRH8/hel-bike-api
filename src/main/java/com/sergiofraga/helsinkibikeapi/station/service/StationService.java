@@ -1,5 +1,6 @@
 package com.sergiofraga.helsinkibikeapi.station.service;
 
+import com.sergiofraga.helsinkibikeapi.station.model.StationDto;
 import com.sergiofraga.helsinkibikeapi.station.model.StationResponse;
 
 /**
@@ -17,4 +18,12 @@ public interface StationService {
      * @return StationResponse
      */
     StationResponse getStations(int pageNo, int pageSize, String sortBy, String sortDir);
+
+    /**
+     * Fetches a station by its id
+     *
+     * @param id the id of the station
+     * @return StationDto station object
+     */
+    StationDto getStationById(int id);
 }

@@ -1,15 +1,14 @@
 package com.sergiofraga.helsinkibikeapi.station;
 
+import com.sergiofraga.helsinkibikeapi.station.model.StationDto;
 import com.sergiofraga.helsinkibikeapi.station.model.StationResponse;
 import com.sergiofraga.helsinkibikeapi.station.service.StationService;
 import com.sergiofraga.helsinkibikeapi.util.AppConstants;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/stations")
 public class StationController {
 
     private final StationService stationService;
@@ -18,7 +17,7 @@ public class StationController {
         this.stationService = stationService;
     }
 
-    @GetMapping
+    @GetMapping(value = "/api/v1/stations")
     public StationResponse getStations(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
@@ -26,5 +25,10 @@ public class StationController {
             @RequestParam(value = "sortDir", defaultValue = AppConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir
     ) {
         return stationService.getStations(pageNo, pageSize, sortBy, sortDir);
+    }
+
+    @GetMapping(value = "/api/v1/stationById")
+    public StationDto getStationById(@RequestParam(value = "id") int id) {
+        return stationService.getStationById(id);
     }
 }

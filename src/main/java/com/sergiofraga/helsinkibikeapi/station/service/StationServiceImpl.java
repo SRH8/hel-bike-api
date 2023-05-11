@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class StationServiceImpl implements StationService {
@@ -34,7 +34,7 @@ public class StationServiceImpl implements StationService {
 
         List<StationDto> content = listOfStations.stream()
                 .map(this::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
 
         StationResponse stationResponse = new StationResponse();
         stationResponse.setContent(content);
@@ -45,6 +45,13 @@ public class StationServiceImpl implements StationService {
         stationResponse.setLast(stations.isLast());
 
         return stationResponse;
+    }
+
+    @Override
+    public StationDto getStationById(int id) {
+        Optional<Station> optionalStation = stationRepository.findById(id);
+
+        return optionalStation.map(this::mapToDto).orElse(null);
     }
 
     /**
