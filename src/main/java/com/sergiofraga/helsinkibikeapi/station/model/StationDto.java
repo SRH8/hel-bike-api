@@ -1,11 +1,15 @@
 package com.sergiofraga.helsinkibikeapi.station.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Station Data Transfer Object
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StationDto {
 
     private int fid;
