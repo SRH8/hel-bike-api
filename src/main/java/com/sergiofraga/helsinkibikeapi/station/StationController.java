@@ -29,7 +29,7 @@ public class StationController {
         return stationService.getStations(pageNo, pageSize, sortBy, sortDir);
     }
 
-    @GetMapping(value = "/api/v1/stationById")
+    @GetMapping(value = "/api/v1/station")
     public StationDto getStationById(@RequestParam(value = "id") int id) {
         StationDto station = stationService.getStationById(id);
 
