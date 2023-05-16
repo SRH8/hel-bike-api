@@ -25,4 +25,29 @@ public class StationDto {
     private int kapasiteet;
     private double x;
     private double y;
+
+    /**
+     * Maps a Station entity to a Station Data Transfer object
+     *
+     * @param station object to be mapped
+     * @return StationDto mapped station
+     */
+    public static StationDto mapToDto(Station station){
+        StationDto stationDto = new StationDto();
+        stationDto.setFid(station.getFid());
+        stationDto.setId(station.getId());
+        stationDto.setNimi(station.getNimi());
+        stationDto.setNamn(station.getNamn());
+        stationDto.setName(station.getName());
+        stationDto.setOsoite(station.getOsoite());
+        stationDto.setAdress(station.getAdress());
+        stationDto.setKaupunki(station.getKaupunki());
+        stationDto.setStad(station.getStad());
+        stationDto.setOperaattor(station.getOperaattor());
+        stationDto.setKapasiteet(station.getKapasiteet());
+        stationDto.setX(station.getX());
+        stationDto.setY(station.getY());
+
+        return stationDto;
+    }
 }

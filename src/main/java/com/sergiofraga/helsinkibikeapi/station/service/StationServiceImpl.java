@@ -33,7 +33,7 @@ public class StationServiceImpl implements StationService {
         List<Station> listOfStations = stations.getContent();
 
         List<StationDto> content = listOfStations.stream()
-                .map(this::mapToDto)
+                .map(StationDto::mapToDto)
                 .toList();
 
         StationResponse stationResponse = new StationResponse();
@@ -51,31 +51,6 @@ public class StationServiceImpl implements StationService {
     public StationDto getStationById(int id) {
         Optional<Station> optionalStation = stationRepository.findById(id);
 
-        return optionalStation.map(this::mapToDto).orElse(null);
-    }
-
-    /**
-     * Maps a Station entity to a Station Data Transfer object
-     *
-     * @param station object to be mapped
-     * @return StationDto mapped station
-     */
-    private StationDto mapToDto(Station station){
-        StationDto stationDto = new StationDto();
-        stationDto.setFid(station.getFid());
-        stationDto.setId(station.getId());
-        stationDto.setNimi(station.getNimi());
-        stationDto.setNamn(station.getNamn());
-        stationDto.setName(station.getName());
-        stationDto.setOsoite(station.getOsoite());
-        stationDto.setAdress(station.getAdress());
-        stationDto.setKaupunki(station.getKaupunki());
-        stationDto.setStad(station.getStad());
-        stationDto.setOperaattor(station.getOperaattor());
-        stationDto.setKapasiteet(station.getKapasiteet());
-        stationDto.setX(station.getX());
-        stationDto.setY(station.getY());
-
-        return stationDto;
+        return optionalStation.map(StationDto::mapToDto).orElse(null);
     }
 }
