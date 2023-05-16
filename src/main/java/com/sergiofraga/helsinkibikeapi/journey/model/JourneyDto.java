@@ -23,4 +23,25 @@ public class JourneyDto {
     private String returnStationName;
     private int distanceCoveredM;
     private int durationS;
+
+    /**
+     * Maps a Journey entity to a Journey Data Transfer object
+     *
+     * @param journey object to be mapped
+     * @return JourneyDto mapped journey
+     */
+    public static JourneyDto mapToDto(Journey journey) {
+        JourneyDto journeyDto = new JourneyDto();
+        journeyDto.setId(journeyDto.getId());
+        journeyDto.setDepartureDate(journey.getDepartureDate());
+        journeyDto.setReturnDate(journey.getReturnDate());
+        journeyDto.setDepartureStationId(journeyDto.getDepartureStationId());
+        journeyDto.setDepartureStationName(journey.getDepartureStationName());
+        journeyDto.setReturnStationId(journey.getReturnStationId());
+        journeyDto.setReturnStationName(journey.getReturnStationName());
+        journeyDto.setDistanceCoveredM(journey.getDistanceCoveredM());
+        journeyDto.setDurationS(journeyDto.getDurationS());
+
+        return journeyDto;
+    }
 }
