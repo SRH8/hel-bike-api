@@ -13,4 +13,5 @@ public class AppConstants {
     public  static final String DEFAULT_PAGE_SIZE = "15";
     public static final String DEFAULT_STATIONS_SORT_BY = "nimi";
     public static final String DEFAULT_SORT_DIRECTION = "asc";
+    public static final String DEFAULT_JOURNEYS_SORT_BY = "departureDate";
 }
