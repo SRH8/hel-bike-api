@@ -32,15 +32,15 @@ public class JourneyDto {
      */
     public static JourneyDto mapToDto(Journey journey) {
         JourneyDto journeyDto = new JourneyDto();
-        journeyDto.setId(journeyDto.getId());
+        journeyDto.setId(journey.getId());
         journeyDto.setDepartureDate(journey.getDepartureDate());
         journeyDto.setReturnDate(journey.getReturnDate());
-        journeyDto.setDepartureStationId(journeyDto.getDepartureStationId());
+        journeyDto.setDepartureStationId(journey.getDepartureStationId());
         journeyDto.setDepartureStationName(journey.getDepartureStationName());
         journeyDto.setReturnStationId(journey.getReturnStationId());
         journeyDto.setReturnStationName(journey.getReturnStationName());
         journeyDto.setDistanceCoveredM(journey.getDistanceCoveredM());
-        journeyDto.setDurationS(journeyDto.getDurationS());
+        journeyDto.setDurationS(journey.getDurationS());
 
         return journeyDto;
     }
