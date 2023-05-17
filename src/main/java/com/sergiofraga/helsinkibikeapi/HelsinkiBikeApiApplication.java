@@ -9,5 +9,4 @@ public class HelsinkiBikeApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HelsinkiBikeApiApplication.class, args);
 	}
-
 }

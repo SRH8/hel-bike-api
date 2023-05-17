@@ -18,7 +18,7 @@ public class StationServiceImpl implements StationService {
 
     private final StationRepository stationRepository;
 
-    StationServiceImpl(StationRepository stationRepository){
+    StationServiceImpl(StationRepository stationRepository) {
         this.stationRepository = stationRepository;
     }
 
