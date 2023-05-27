@@ -5,6 +5,7 @@ import com.sergiofraga.helsinkibikeapi.station.model.StationResponse;
 import com.sergiofraga.helsinkibikeapi.station.service.StationService;
 import com.sergiofraga.helsinkibikeapi.util.AppConstants;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class StationController {
         this.stationService = stationService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/api/v1/stations")
     public StationResponse getStations(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
@@ -29,6 +31,7 @@ public class StationController {
         return stationService.getStations(pageNo, pageSize, sortBy, sortDir);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/api/v1/station")
     public StationDto getStationById(@RequestParam(value = "id") int id) {
         StationDto station = stationService.getStationById(id);

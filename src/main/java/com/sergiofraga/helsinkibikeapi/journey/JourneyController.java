@@ -3,6 +3,7 @@ package com.sergiofraga.helsinkibikeapi.journey;
 import com.sergiofraga.helsinkibikeapi.journey.model.JourneyResponse;
 import com.sergiofraga.helsinkibikeapi.journey.service.JourneyService;
 import com.sergiofraga.helsinkibikeapi.util.AppConstants;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ public class JourneyController {
         this.journeyService = journeyService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/api/v1/journeys")
     public JourneyResponse getJourneys(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
