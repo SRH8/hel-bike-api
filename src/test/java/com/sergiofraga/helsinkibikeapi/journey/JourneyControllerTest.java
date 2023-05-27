@@ -17,6 +17,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = JourneyController.class)
 class JourneyControllerTest {
@@ -54,5 +58,15 @@ class JourneyControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content[1].id", Matchers.is(journeyDto2.getId())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content[1].departureDate", Matchers.is(journeyDto2.getDepartureDate().toString())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content[1].returnDate", Matchers.is(journeyDto2.getReturnDate().toString())));
+    }
+
+    @Test
+    @DisplayName("When making a bad Get request to /api/v1/journeys it should return a Bad Request exception")
+    void whenBadRequestToJourneysEndpoint_thenShouldReturnAnException() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/journeys?pageNo=aaa"))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertEquals("Failed to convert value of type 'java.lang.String' to required" +
+                                " type 'int'; For input string: \"aaa\"",
+                        Objects.requireNonNull(result.getResolvedException()).getMessage()));
     }
 }

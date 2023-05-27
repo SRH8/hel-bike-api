@@ -21,6 +21,7 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = StationController.class)
 class StationControllerTest {
@@ -44,7 +45,7 @@ class StationControllerTest {
         Mockito.when(stationService.getStations(0, 2, "nimi", "asc")).thenReturn(response);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/stations?pageNo=0&pageSize=2&sortBy=nimi&sortDir=asc"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
+                .andExpect(status().is(200))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.size()", Matchers.is(6)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.pageNo", Matchers.is(0)))
@@ -69,7 +70,7 @@ class StationControllerTest {
         Mockito.when(stationService.getStationById(station.getFid())).thenReturn(station);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/station?id=133"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
+                .andExpect(status().is(200))
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.size()", Matchers.is(13)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.fid", Matchers.is(station.getFid())))
@@ -78,10 +79,20 @@ class StationControllerTest {
     }
 
     @Test
+    @DisplayName("When making a bad Get request to /api/v1/stations it should return a Bad Request exception")
+    void whenBadRequestToStationsEndpoint_thenShouldReturnAnException() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/stations?pageNo=aaa"))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertEquals("Failed to convert value of type 'java.lang.String' to required" +
+                                " type 'int'; For input string: \"aaa\"",
+                        Objects.requireNonNull(result.getResolvedException()).getMessage()));
+    }
+
+    @Test
     @DisplayName("When making a Get request to /api/v1/station with a non-existent id it should return a Not Found exception")
     void whenGetRequestToStationByIdEndPointWithNonExistentId_thenShouldReturnAnException() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/station?id=1000"))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(status().isNotFound())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof ResponseStatusException))
                 .andExpect(result -> assertEquals("404 NOT_FOUND \"Station was not found for parameter id:{1000}\"",
                         Objects.requireNonNull(result.getResolvedException()).getMessage()));
