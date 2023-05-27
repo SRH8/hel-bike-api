@@ -4,9 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Station Data Transfer Object
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

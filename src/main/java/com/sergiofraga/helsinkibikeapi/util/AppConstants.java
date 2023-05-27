@@ -1,8 +1,5 @@
 package com.sergiofraga.helsinkibikeapi.util;
 
-/**
- * This class stores constants used by the application
- */
 public class AppConstants {
 
     private  AppConstants() {

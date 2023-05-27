@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-/**
- * Model for the GET station response
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

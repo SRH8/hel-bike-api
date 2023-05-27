@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/**
- * Journey Data Transfer Object
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
