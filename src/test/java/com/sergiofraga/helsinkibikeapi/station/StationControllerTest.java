@@ -89,6 +89,16 @@ class StationControllerTest {
     }
 
     @Test
+    @DisplayName("When making a bad Get request to /api/v1/station it should return a Bad Request exception")
+    void whenBadRequestToStationByIdEndpoint_thenShouldReturnAnException() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/station?id=aaa"))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertEquals("Failed to convert value of type 'java.lang.String' to required" +
+                                " type 'int'; For input string: \"aaa\"",
+                        Objects.requireNonNull(result.getResolvedException()).getMessage()));
+    }
+
+    @Test
     @DisplayName("When making a Get request to /api/v1/station with a non-existent id it should return a Not Found exception")
     void whenGetRequestToStationByIdEndPointWithNonExistentId_thenShouldReturnAnException() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/station?id=1000"))
