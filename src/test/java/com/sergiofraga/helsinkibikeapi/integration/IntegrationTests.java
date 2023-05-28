@@ -54,6 +54,7 @@ class IntegrationTests {
 
     @BeforeAll
     static void setUpDatabaseProperties() {
+        System.setProperty("spring.jpa.hibernate.ddl-auto", "update");
         System.setProperty("spring.datasource.url", mysql.getJdbcUrl());
         System.setProperty("spring.datasource.username", mysql.getUsername());
         System.setProperty("spring.datasource.password", mysql.getPassword());
