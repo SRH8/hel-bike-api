@@ -98,16 +98,10 @@ After you run the script, you are ready to run the backend service locally.
 ## Run Locally
 Once you have cloned the project, set up the database and added data to it, you can run the backend service by following this guide.
 
-Go to the project directory
+Go to the project directory. Maven will install all necessary dependencies to run the project.
 
 ```bash
   cd hel-bike-api
-```
-
-Install dependencies
-
-```bash
-  ./mvnw install
 ```
 
 Edit application.properties file to set up the local datasource
