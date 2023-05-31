@@ -59,6 +59,13 @@ https://helsinki-bike-api-production.up.railway.app/api/v1/stations
 As the backend service fetches data from a database, you will need to set up a database and update the application properties file.
 
 ### Setting up the database
+
+Clone the project
+
+```bash
+  git clone https://github.com/SRH8/hel-bike-api.git
+```
+
 Setting up the database is fairly simple thanks to docker. All you need to do is run the following command in the project's root directory
 
 ```bash
@@ -89,13 +96,7 @@ If you decide not to use it, keep reading for step-by-step instructions on how t
   
 After you run the script, you are ready to run the backend service locally. 
 ## Run Locally
-Once you have set up the database and added data to it, you can run the backend service by following this guide.
-
-Clone the project
-
-```bash
-  git clone https://github.com/SRH8/hel-bike-api.git
-```
+Once you have cloned the project, set up the database and added data to it, you can run the backend service by following this guide.
 
 Go to the project directory
 
