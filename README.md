@@ -6,11 +6,8 @@ The application was built using Java and the [Spring framework](https://spring.i
 
 The reason I chose Java is that, as of right now, it is the language I have the most experience on, and I am quite comfortable developing in this language. Spring's ecosystem also took an important role in the decision, as it is extremely flexible, and it met all my needs: from building a web application to running jobs to import and validate the stations and journeys data.  
 
-## Demo
-
-An online demo can be found here:
-
-https://helsinki-bike-api-production.up.railway.app/api/v1/stations
+**_NOTE:_** As of 20/06/2023 the application will not be hosted on the cloud for a while. This was caused by changes on the pricing of my backend provider,
+however it should be back online soon.
 
 ## API Reference
 
